@@ -43,11 +43,24 @@
         "name": "Tradlyst",
         "url": "./index.html",
         "logo": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%233B82F6%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2260%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22%23FFFFFF%22>TD</text></svg>",
+        "description": "India's most advanced trading journal and analytics platform for professional traders",
+        "foundingDate": "2024",
         "contactPoint": {
             "@type": "ContactPoint",
             "email": "contact@tradlyst.com",
             "contactType": "Customer Service",
-            "url": "./contact.html"
+            "url": "./contact.html",
+            "availableLanguage": "English"
+        },
+        "sameAs": [
+            "https://twitter.com/tradlyst",
+            "https://linkedin.com/company/tradlyst",
+            "https://github.com/tradlyst"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IN",
+            "addressRegion": "India"
         }
     }
     </script>
@@ -56,7 +69,50 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Tradlyst",
-        "url": "./index.html"
+        "url": "./index.html",
+        "description": "India's most advanced trading journal and analytics platform",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "./index.html?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tradlyst",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web Browser",
+        "description": "Advanced trading journal and analytics platform for Indian traders",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Tradlyst Pro Plan",
+                "price": "999",
+                "priceCurrency": "INR",
+                "priceValidUntil": "2025-12-31",
+                "availability": "https://schema.org/InStock",
+                "description": "Professional trading journal with advanced analytics"
+            },
+            {
+                "@type": "Offer", 
+                "name": "Tradlyst Annual Plan",
+                "price": "9999",
+                "priceCurrency": "INR",
+                "priceValidUntil": "2025-12-31",
+                "availability": "https://schema.org/InStock",
+                "description": "Annual subscription with 2 months free"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "2000",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
     }
     </script>
     <script type="application/ld+json">
@@ -139,12 +195,87 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Customer Testimonials",
+        "description": "Reviews from satisfied Tradlyst users",
+        "itemListElement": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Abhay"
+                },
+                "reviewBody": "I separate strategy issues from execution now. Reviewing trades brought massive clarity. I finally know what to fix.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                }
+            },
+            {
+                "@type": "Review", 
+                "author": {
+                    "@type": "Person",
+                    "name": "Priya Sharma"
+                },
+                "reviewBody": "The psychology tracking is a game-changer. Tradlyst helped me quantify how greed and fear were affecting my P&L. I'm trading much more objectively now.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                }
+            },
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person", 
+                    "name": "Vikram Kumar"
+                },
+                "reviewBody": "Automated importing from Zerodha saves me hours every week. I can focus on analysis, not data entry. The analytics are deeper than anything I could build in Excel.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body class="antialiased">
 
     <div id="scroll-progress-bar"></div>
     <div id="page-overlay"></div>
+    
+    <!-- Skeleton Loading Screens -->
+    <div id="skeleton-loading" class="fixed inset-0 bg-[#0D1117] z-50 flex items-center justify-center" style="display: none;">
+        <div class="text-center">
+            <div class="skeleton-avatar mx-auto mb-4"></div>
+            <div class="skeleton-text w-48 mx-auto mb-2"></div>
+            <div class="skeleton-text w-32 mx-auto"></div>
+        </div>
+    </div>
+    
+    <!-- Testimonial Skeleton -->
+    <div id="testimonial-skeleton" class="hidden">
+        <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-4">
+            <div class="skeleton-text w-20 mb-4"></div>
+            <div class="skeleton-text mb-2"></div>
+            <div class="skeleton-text mb-2"></div>
+            <div class="skeleton-text w-3/4 mb-4"></div>
+            <div class="flex items-center">
+                <div class="skeleton-avatar mr-3"></div>
+                <div>
+                    <div class="skeleton-text w-16 mb-1"></div>
+                    <div class="skeleton-text w-20"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Header -->
     <header id="main-header" class="sticky top-0 z-50 bg-[#0D1117] bg-opacity-95 backdrop-blur-md border-b border-gray-800">

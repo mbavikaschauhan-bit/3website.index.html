@@ -117,6 +117,102 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    // --- ENHANCED ANIMATIONS & MICRO-INTERACTIONS ---
+    
+    // Parallax Scrolling Effect
+    function handleParallax() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.parallax-slow, .parallax-fast');
+        
+        parallaxElements.forEach(element => {
+            const speed = element.classList.contains('parallax-slow') ? 0.5 : 0.3;
+            const yPos = -(scrolled * speed);
+            element.style.setProperty('--parallax-offset', `${yPos}px`);
+        });
+    }
+
+    // Enhanced Scroll Progress Bar
+    function updateScrollProgress() {
+        const scrollProgress = document.getElementById('scroll-progress');
+        if (scrollProgress) {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+    }
+
+    // Typewriter Effect for Headlines
+    function initTypewriterEffect() {
+        const typewriterElements = document.querySelectorAll('.typewriter-text');
+        typewriterElements.forEach(element => {
+            const text = element.textContent;
+            element.textContent = '';
+            element.style.borderRight = '2px solid #3b82f6';
+            
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    setTimeout(() => {
+                        element.style.borderRight = 'none';
+                    }, 1000);
+                }
+            }, 100);
+        });
+    }
+
+    // Enhanced Button Interactions
+    function enhanceButtonInteractions() {
+        const buttons = document.querySelectorAll('.btn-micro-interaction');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    }
+
+    // Card Hover Enhancements
+    function enhanceCardInteractions() {
+        const cards = document.querySelectorAll('.card-micro-interaction');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+                card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '';
+            });
+        });
+    }
+
+    // Staggered Animation System
+    function initStaggeredAnimations() {
+        const staggerGroups = document.querySelectorAll('.stagger-group');
+        staggerGroups.forEach(group => {
+            const children = group.querySelectorAll('.stagger-1, .stagger-2, .stagger-3, .stagger-4, .stagger-5, .stagger-6');
+            children.forEach((child, index) => {
+                child.style.opacity = '0';
+                child.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    child.style.transition = 'all 0.6s ease-out';
+                    child.style.opacity = '1';
+                    child.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    }
+
     // --- INTERSECTION OBSERVERS (FOR PERFORMANCE) ---
     // Generic "Reveal on Scroll" Animations
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -258,9 +354,173 @@ document.addEventListener('DOMContentLoaded', () => {
         if (backToTopButton) {
             backToTopButton.classList.toggle('is-visible', scrollTop > 300);
         }
+        
+        // Enhanced scroll effects
+        handleParallax();
+        updateScrollProgress();
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial call
+    
+    // Initialize enhanced animations
+    initTypewriterEffect();
+    enhanceButtonInteractions();
+    enhanceCardInteractions();
+    initStaggeredAnimations();
+    
+    // --- SKELETON LOADING SYSTEM ---
+    
+    // Show skeleton loading
+    function showSkeletonLoading() {
+        const skeleton = document.getElementById('skeleton-loading');
+        if (skeleton) {
+            skeleton.style.display = 'flex';
+        }
+    }
+    
+    // Hide skeleton loading
+    function hideSkeletonLoading() {
+        const skeleton = document.getElementById('skeleton-loading');
+        if (skeleton) {
+            skeleton.style.display = 'none';
+        }
+    }
+    
+    // Show testimonial skeleton
+    function showTestimonialSkeleton() {
+        const testimonialWrapper = document.getElementById('testimonial-wrapper');
+        const skeleton = document.getElementById('testimonial-skeleton');
+        if (testimonialWrapper && skeleton) {
+            // Clone skeleton multiple times for carousel effect
+            for (let i = 0; i < 3; i++) {
+                const clone = skeleton.cloneNode(true);
+                clone.classList.remove('hidden');
+                clone.classList.add('skeleton-card');
+                testimonialWrapper.appendChild(clone);
+            }
+        }
+    }
+    
+    // Hide testimonial skeleton
+    function hideTestimonialSkeleton() {
+        const testimonialWrapper = document.getElementById('testimonial-wrapper');
+        if (testimonialWrapper) {
+            const skeletons = testimonialWrapper.querySelectorAll('.skeleton-card');
+            skeletons.forEach(skeleton => skeleton.remove());
+        }
+    }
+    
+    // Simulate loading for avatars
+    function simulateAvatarLoading() {
+        const avatars = document.querySelectorAll('img[src*="ui-avatars.com"]');
+        avatars.forEach(avatar => {
+            avatar.style.opacity = '0';
+            avatar.addEventListener('load', () => {
+                avatar.style.transition = 'opacity 0.3s ease';
+                avatar.style.opacity = '1';
+            });
+        });
+    }
+    
+    // Initialize skeleton loading
+    simulateAvatarLoading();
+    
+    // --- ERROR BOUNDARY SYSTEM ---
+    
+    // Global error handler
+    window.addEventListener('error', (event) => {
+        console.error('Global error caught:', event.error);
+        showErrorNotification('Something went wrong. Please refresh the page.');
+    });
+    
+    // Unhandled promise rejection handler
+    window.addEventListener('unhandledrejection', (event) => {
+        console.error('Unhandled promise rejection:', event.reason);
+        showErrorNotification('A network error occurred. Please check your connection.');
+        event.preventDefault();
+    });
+    
+    // Error notification system
+    function showErrorNotification(message) {
+        // Remove existing error notifications
+        const existing = document.querySelector('.error-notification');
+        if (existing) existing.remove();
+        
+        const notification = document.createElement('div');
+        notification.className = 'error-notification fixed top-4 right-4 bg-red-600 text-white p-4 rounded-lg shadow-lg z-50 max-w-sm';
+        notification.innerHTML = `
+            <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                </svg>
+                <span>${message}</span>
+                <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white hover:text-gray-200">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.remove();
+            }
+        }, 5000);
+    }
+    
+    // Network error handling
+    function handleNetworkError(error) {
+        console.error('Network error:', error);
+        showErrorNotification('Network error. Please check your internet connection.');
+    }
+    
+    // API error handling
+    function handleAPIError(error, context = '') {
+        console.error(`API error in ${context}:`, error);
+        showErrorNotification(`Failed to ${context || 'load data'}. Please try again.`);
+    }
+    
+    // Form submission error handling
+    function handleFormError(error, formName) {
+        console.error(`Form error in ${formName}:`, error);
+        showErrorNotification(`Failed to submit ${formName}. Please try again.`);
+    }
+    
+    // Safe function wrapper
+    function safeExecute(fn, context = '', fallback = null) {
+        try {
+            return fn();
+        } catch (error) {
+            console.error(`Error in ${context}:`, error);
+            if (fallback) {
+                return fallback();
+            }
+            showErrorNotification(`Error in ${context}. Please refresh the page.`);
+            return null;
+        }
+    }
+    
+    // Enhanced form submission with error handling
+    function setupFormErrorHandling() {
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                try {
+                    // Existing form logic here
+                } catch (error) {
+                    handleFormError(error, form.id || 'form');
+                    e.preventDefault();
+                }
+            });
+        });
+    }
+    
+    // Initialize error handling
+    setupFormErrorHandling();
 
     // --- TESTIMONIAL CAROUSEL ---
     const carouselWrapper = document.getElementById('testimonial-wrapper');

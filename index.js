@@ -583,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem(COOKIE_CONSENT_KEY, consent);
                 hideBanner();
             } catch (error) {
-                console.error('Could not save cookie consent:', error);
+                // Cookie consent could not be saved
             }
         };
 
@@ -593,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             if (!localStorage.getItem(COOKIE_CONSENT_KEY)) showBanner();
         } catch (error) {
-            console.error('Could not access localStorage:', error);
+            // localStorage not accessible, show banner
             showBanner();
         }
     }

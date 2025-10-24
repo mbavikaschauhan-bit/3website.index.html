@@ -621,6 +621,36 @@ button.faq-question {
     margin-top: 1rem;
 }
 
+/* --- Candlestick Chart Animation Classes --- */
+.candlestick-1 { left: 2%; bottom: 20%; --h: 80px; --body-h: 40px; --body-b: 15px; --anim-duration: 6.2s; }
+.candlestick-2 { left: 6%; bottom: 22%; --h: 90px; --body-h: 50px; --body-b: 15px; --anim-duration: 7.8s; }
+.candlestick-3 { left: 10%; bottom: 23%; --h: 75px; --body-h: 30px; --body-b: 20px; --anim-duration: 6.5s; }
+.candlestick-4 { left: 14%; bottom: 25%; --h: 60px; --body-h: 15px; --body-b: 22px; --anim-duration: 5.5s; }
+.candlestick-5 { left: 18%; bottom: 30%; --h: 55px; --body-h: 10px; --body-b: 5px; --anim-duration: 6.8s; }
+.candlestick-6 { left: 22%; bottom: 28%; --h: 70px; --body-h: 4px; --body-b: 33px; --anim-duration: 7.1s; }
+.candlestick-7 { left: 26%; bottom: 26%; --h: 80px; --body-h: 15px; --body-b: 60px; --anim-duration: 5.9s; }
+.candlestick-8 { left: 30%; bottom: 30%; --h: 60px; --body-h: 40px; --body-b: 10px; --anim-duration: 5.1s; }
+.candlestick-9 { left: 34%; bottom: 35%; --h: 40px; --body-h: 20px; --body-b: 5px; --anim-duration: 4.8s; }
+.candlestick-10 { left: 38%; bottom: 45%; --h: 50px; --body-h: 25px; --body-b: 10px; --anim-duration: 7.4s; }
+.candlestick-11 { left: 40%; bottom: 25%; --h: 70px; --body-h: 40px; --body-b: 20px; --anim-duration: 5.3s; }
+.candlestick-12 { left: 42%; bottom: 55%; --h: 75px; --body-h: 50px; --body-b: 10px; --anim-duration: 6.5s; }
+.candlestick-13 { left: 46%; bottom: 20%; --h: 65px; --body-h: 35px; --body-b: 15px; --anim-duration: 8.0s; }
+.candlestick-14 { left: 50%; bottom: 22%; --h: 85px; --body-h: 25px; --body-b: 40px; --anim-duration: 7.2s; }
+.candlestick-15 { left: 54%; bottom: 25%; --h: 110px; --body-h: 80px; --body-b: 10px; --anim-duration: 5.2s; }
+.candlestick-16 { left: 58%; bottom: 42%; --h: 80px; --body-h: 40px; --body-b: 15px; --anim-duration: 7.6s; }
+.candlestick-17 { left: 62%; bottom: 50%; --h: 50px; --body-h: 30px; --body-b: 5px; --anim-duration: 6.9s; }
+.candlestick-18 { left: 66%; bottom: 48%; --h: 40px; --body-h: 20px; --body-b: 10px; --anim-duration: 4.5s; }
+.candlestick-19 { left: 70%; bottom: 50%; --h: 55px; --body-h: 20px; --body-b: 15px; --anim-duration: 6.7s; }
+.candlestick-20 { left: 72%; bottom: 28%; --h: 80px; --body-h: 30px; --body-b: 40px; --anim-duration: 6.6s; }
+.candlestick-21 { left: 74%; bottom: 52%; --h: 60px; --body-h: 35px; --body-b: 10px; --anim-duration: 7.0s; }
+.candlestick-22 { left: 78%; bottom: 55%; --h: 45px; --body-h: 10px; --body-b: 17px; --anim-duration: 6.1s; }
+.candlestick-23 { left: 82%; bottom: 58%; --h: 70px; --body-h: 20px; --body-b: 20px; --anim-duration: 7.3s; }
+.candlestick-24 { left: 86%; bottom: 62%; --h: 120px; --body-h: 115px; --body-b: 2px; --anim-duration: 5.8s; }
+.candlestick-25 { left: 90%; bottom: 80%; --h: 90px; --body-h: 50px; --body-b: 15px; --anim-duration: 7.9s; }
+.candlestick-26 { left: 93%; bottom: 65%; --h: 80px; --body-h: 60px; --body-b: 10px; --anim-duration: 6.3s; }
+.candlestick-27 { left: 96%; bottom: 45%; --h: 70px; --body-h: 55px; --body-b: 5px; --anim-duration: 7.5s; }
+.candlestick-28 { left: 99%; bottom: 30%; --h: 60px; --body-h: 20px; --body-b: 30px; --anim-duration: 5.6s; }
+
 .social-icon-link {
     position: relative;
     display: inline-block;

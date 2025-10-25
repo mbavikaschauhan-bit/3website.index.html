@@ -823,8 +823,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const contactForm = document.getElementById('contact-form');
         if (contactForm) handleFormSubmission(contactForm);
 
-        const careersForm = document.getElementById('careers-form');
-        if (careersForm) handleFormSubmission(careersForm);
+        // Careers form not implemented yet - will be added when needed
     }
     setupAnimatedForms();
 
